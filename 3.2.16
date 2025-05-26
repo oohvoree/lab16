@@ -1,0 +1,72 @@
+from tkinter import *
+
+root = Tk()
+root.title("Чарівний ранок у лісі")
+
+canvas_width = 800
+canvas_height = 600
+canvas = Canvas(root, width=canvas_width, height=canvas_height, bg="skyblue")
+canvas.pack()
+
+# Сонце
+canvas.create_oval(50, 50, 150, 150, fill="gold", outline="orange")
+
+# Хмарки
+def draw_cloud(x, y):
+    canvas.create_oval(x, y, x+60, y+40, fill="white", outline="")
+    canvas.create_oval(x+30, y-10, x+90, y+30, fill="white", outline="")
+    canvas.create_oval(x+60, y, x+120, y+40, fill="white", outline="")
+
+draw_cloud(250, 80)
+draw_cloud(500, 60)
+draw_cloud(620, 100)
+
+# Трава
+canvas.create_rectangle(0, 400, canvas_width, canvas_height, fill="mediumseagreen", outline="")
+
+# Дерева з листям
+def draw_tree(x, y):
+    # стовбур
+    canvas.create_rectangle(x + 20, y + 60, x + 40, y + 130, fill="saddlebrown", outline="")
+    # крона (три шари)
+    canvas.create_oval(x, y + 30, x + 60, y + 90, fill="forestgreen", outline="")
+    canvas.create_oval(x - 10, y + 10, x + 50, y + 70, fill="forestgreen", outline="")
+    canvas.create_oval(x + 10, y, x + 70, y + 60, fill="forestgreen", outline="")
+
+draw_tree(100, 250)
+draw_tree(220, 260)
+draw_tree(600, 230)
+draw_tree(500, 280)
+
+# Квіточки
+def draw_flower(x, y, color):
+    canvas.create_oval(x-5, y-5, x+5, y+5, fill=color, outline="")
+    canvas.create_oval(x+5, y-5, x+15, y+5, fill=color, outline="")
+    canvas.create_oval(x-5, y+5, x+5, y+15, fill=color, outline="")
+    canvas.create_oval(x+5, y+5, x+15, y+15, fill=color, outline="")
+    canvas.create_oval(x+3, y+3, x+12, y+12, fill="yellow", outline="")
+
+draw_flower(300, 500, "red")
+draw_flower(330, 510, "magenta")
+draw_flower(360, 490, "blue")
+draw_flower(390, 520, "deeppink")
+draw_flower(420, 500, "orange")
+
+# Зайчик
+# Тіло
+canvas.create_oval(150, 430, 190, 460, fill="gray90", outline="")
+# Голова
+canvas.create_oval(135, 410, 165, 440, fill="gray90", outline="")
+# Вушка
+canvas.create_oval(145, 370, 153, 410, fill="gray90", outline="")
+canvas.create_oval(150, 370, 158, 410, fill="gray90", outline="")
+# Очі
+canvas.create_oval(155, 420, 158, 423, fill="black")
+# Ніс
+canvas.create_oval(148, 432, 150, 434, fill="pink", outline="")
+
+# Озеро
+canvas.create_oval(450, 470, 700, 550, fill="lightblue", outline="blue")
+
+root.mainloop()
+
