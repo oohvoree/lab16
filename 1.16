@@ -1,0 +1,56 @@
+from tkinter import*
+import winsound
+from PIL import Image, ImageTk
+def play():
+    if var.get() == 0:
+        winsound.PlaySound("coconut.wav", winsound.SND_FILENAME)
+    elif var.get() == 1:
+        winsound.PlaySound("pineapple_converted.wav", winsound.SND_FILENAME)
+    elif var.get() == 2:
+        winsound.PlaySound("water_converted.wav", winsound.SND_FILENAME)
+    elif var.get() == 3:
+        winsound.PlaySound("melon_converted.wav", winsound.SND_FILENAME)
+    elif var.get() == 4:
+        winsound.PlaySound("cherry_converted.wav", winsound.SND_FILENAME)
+    elif var.get() == 5:
+        winsound.PlaySound("plum_converted.wav", winsound.SND_FILENAME)
+    elif var.get() == 6:
+        winsound.PlaySound("peach_converted.wav", winsound.SND_FILENAME)
+    elif var.get() == 7:
+        winsound.PlaySound("apricot_converted.wav", winsound.SND_FILENAME)
+
+root=Tk()
+root.minsize(width=300, height=600)
+root.title("Словник")
+root['bg']='lavender'
+frame = LabelFrame(root, text="Виберіть слово", padx=5, bg="lavender",bd=3)
+frame.pack()
+var = IntVar()
+var.set(0)
+Radiobutton1 = Radiobutton(frame,bg="lavender",text="Кокос",
+variable=var, value=0).pack(anchor="w")
+Radiobutton2 = Radiobutton(frame,bg="lavender",text="Ананас",
+variable=var, value=1).pack(anchor="w")
+Radiobutton3 = Radiobutton(frame,bg="lavender",text="Кавун",
+variable=var, value=2).pack(anchor="w")
+Radiobutton4 = Radiobutton(frame,bg="lavender",text="Диня",
+variable=var, value=3).pack(anchor="w")
+Radiobutton5 = Radiobutton(frame,bg="lavender",text="Вишня",
+variable=var, value=4).pack(anchor="w")
+Radiobutton6 = Radiobutton(frame,bg="lavender",text="Слива",
+variable=var, value=5).pack(anchor="w")
+Radiobutton7 = Radiobutton(frame,bg="lavender",text="Персик",
+variable=var, value=6).pack(anchor="w")
+Radiobutton8 = Radiobutton(frame,bg="lavender",text="Абрикос",
+variable=var, value=7).pack(anchor="w")
+
+button = Button(text="Відтворити",width=15, height=2,bg="lightskyblue",command=play).pack()
+canvas = Canvas(root,width=545,height=273,bg='lavender')
+canvas.pack()
+img = Image.open('1.png')
+img = img.resize((550, 275))
+img = ImageTk.PhotoImage(img)
+canvas.create_image(0, 0, image=img, anchor=NW)
+canvas.image = img
+
+root.mainloop()
